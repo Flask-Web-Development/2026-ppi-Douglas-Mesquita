@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Meu Carrinho{% endblock %}
+
+{% block header %}
+  <h1>Seu Carrinho</h1>
+{% endblock %}
+
+{% block content %}
+  {% if items %}
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Preço</th>
+          <th>Qtd</th>
+          <th>Subtotal</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+          <tr>
+            <td>{{ item['name'] }}</td>
+            <td>R$ {{ "%.2f"|format(item['price']) }}</td>
+            <td>{{ item['quantity'] }}</td>
+            <td>R$ {{ "%.2f"|format(item['subtotal']) }}</td>
+            <td>
+              <form action="#" method="post" style="display:inline;">
+                <input type="submit" value="Remover" class="danger">
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="total">
+      <strong>Total da Compra: R$ {{ "%.2f"|format(total) }}</strong>
+    </div>
+  {% else %}
+    <p>Seu carrinho está vazio.</p>
+    <a href="{{ url_for('index') }}">Voltar para a loja</a>
+  {% endif %}
+{% endblock %}

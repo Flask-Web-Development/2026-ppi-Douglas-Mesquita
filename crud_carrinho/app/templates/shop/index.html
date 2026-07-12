@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Produtos{% endblock %}
+
+{% block header %}
+  <h1>Nossos Produtos</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="products-grid">
+    {% for product in products %}
+      <article class="product">
+        <header>
+          <h3>{{ product['name'] }}</h3>
+          <div class="price">R$ {{ "%.2f"|format(product['price']) }}</div>
+        </header>
+        <p>{{ product['description'] }}</p>
+        
+        {% if g.user %}
+          <form action="#" method="post">
+            <input type="hidden" name="product_id" value="{{ product['id'] }}">
+            <input type="number" name="quantity" value="1" min="1" style="width: 60px;">
+            <input type="submit" value="Adicionar ao Carrinho">
+          </form>
+        {% else %}
+          <p><a href="{{ url_for('auth.login') }}">Faça login para comprar</a></p>
+        {% endif %}
+      </article>
+      {% if not loop.last %}<hr>{% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}

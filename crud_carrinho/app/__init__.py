@@ -29,4 +29,10 @@ def create_app(test_config=None):
     from . import auth
     app.register_blueprint(auth.bp)
     
+    from . import shop
+    app.register_blueprint(shop.bp)
+    
+    # Faz com que url_for('index') e url_for('shop.index') apontem para o mesmo lugar
+    app.add_url_rule('/', endpoint='index')
+    
     return app
