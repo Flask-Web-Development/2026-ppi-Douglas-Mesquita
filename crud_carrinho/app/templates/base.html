@@ -2,22 +2,19 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <!-- RNF08: Meta tag essencial para garantir a responsividade em dispositivos móveis -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{% endblock %} - CRUD Carrinho</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <nav>
-    <h1><a href="{{ url_for('index') }}">Loja Online</a></h1>
+    <h1><a href="{{ url_for('index') }}">Lojinha do Douglas</a></h1>
     <ul>
       {% if g.user %}
-        <!-- RF05: Funcionalidades visíveis apenas para usuários autenticados -->
         <li><span>Olá, {{ g.user['username'] }}</span></li>
         <li><a href="{{ url_for('shop.cart') }}">Meu Carrinho</a></li>
         <li><a href="{{ url_for('auth.logout') }}">Sair</a></li>
       {% else %}
-        <!-- US01 e US02: Opções para visitantes realizarem cadastro ou login -->
         <li><a href="{{ url_for('auth.register') }}">Cadastrar</a></li>
         <li><a href="{{ url_for('auth.login') }}">Login</a></li>
       {% endif %}
@@ -29,12 +26,10 @@
       {% block header %}{% endblock %}
     </header>
 
-    <!-- Exibição de mensagens (flashed messages) para erros de validação ou sucesso -->
     {% for message in get_flashed_messages() %}
       <div class="flash">{{ message }}</div>
     {% endfor %}
 
-    <!-- Onde o conteúdo específico de cada página será inserido -->
     {% block content %}{% endblock %}
   </section>
 </body>

@@ -11,11 +11,9 @@
     {% for product in products %}
       <article class="product">
         <header>
-          <h3>{{ product['name'] }}</h3>
+          <h3><a href="{{ url_for('shop.details', id=product['id']) }}">{{ product['name'] }}</a></h3>
           <div class="price">R$ {{ "%.2f"|format(product['price']) }}</div>
         </header>
-        <p>{{ product['description'] }}</p>
-        
         {% if g.user %}
           <form action="#" method="post">
             <input type="hidden" name="product_id" value="{{ product['id'] }}">

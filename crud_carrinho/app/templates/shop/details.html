@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ product['name'] }} - Detalhes{% endblock %}
+
+{% block header %}
+  <h1>Detalhes do Produto</h1>
+{% endblock %}
+
+{% block content %}
+  <article class="product-details">
+    <header>
+      <h2>{{ product['name'] }}</h2>
+      <p class="price"><strong>Preço:</strong> R$ {{ "%.2f"|format(product['price']) }}</p>
+    </header>
+    
+    <div class="description">
+      <h3>Descrição</h3>
+      <p>{{ product['description'] }}</p>
+    </div>
+
+    <hr>
+
+    {% if g.user %}
+      <!-- Se o usuário estiver logado, permite adicionar ao carrinho (RF09) -->
+      <form action="{{ url_for('shop.index') }}" method="post">
+        <input type="hidden" name="product_id" value="{{ product['id'] }}">
+        <label for="quantity">Quantidade:</label>
+        <input type="number" name="quantity" value="1" min="1" required style="width: 60px;">
+        <input type="submit" value="Adicionar ao Carrinho">
+      </form>
+    {% else %}
+      <p><a href="{{ url_for('auth.login') }}">Faça login para comprar este produto.</a></p>
+    {% endif %}
+
+    <div style="margin-top: 20px;">
+      <a href="{{ url_for('index') }}" class="button">← Voltar para a Loja</a>
+    </div>
+  </article>
+{% endblock %}
