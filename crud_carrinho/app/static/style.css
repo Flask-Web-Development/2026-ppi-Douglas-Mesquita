@@ -1,6 +1,7 @@
-html { font-family: sans-serif; background: #979ffb; padding: 1rem; }
-body { max-width: 800px; margin: 0 auto; background: rgb(211, 211, 211); padding: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; }
+html { font-family: sans-serif;background: #30a701; background-repeat: no-repeat; background-image: url(https://clickpetroleoegas.com.br/wp-content/uploads/2025/08/atacadao-vagas-de-emprego-processo-seletivo-trabalhe-conosco.jpg);background-size: cover; padding: 1rem; }
+body { color: rgb(255, 255, 255); max-width: 800px; margin: 0 auto; background: #ff8800;  padding: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; }
 
+h3 a { text-decoration: none; color: rgb(255, 255, 255); }
 nav { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ccc; padding-bottom: 0.5rem; margin-bottom: 1rem; }
 nav h1 { margin: 0; font-size: 1.5rem; }
 nav ul { display: flex; list-style: none; margin: 0; padding: 0; }

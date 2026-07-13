@@ -11,7 +11,7 @@
     {% for product in products %}
       <article class="product">
         <header>
-          <h3><a href="{{ url_for('shop.details', id=product['id']) }}">{{ product['name'] }}</a></h3>
+          <h3 class="produto" ><a href="{{ url_for('shop.details', id=product['id']) }}">{{ product['name'] }}</a></h3>
           <div class="price">R$ {{ "%.2f"|format(product['price']) }}</div>
         </header>
         {% if g.user %}
